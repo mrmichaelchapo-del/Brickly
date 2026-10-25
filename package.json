@@ -1,0 +1,62 @@
+{
+  "name": "brickly",
+  "version": "0.1.0",
+  "description": "Brickly — a block-based programming language built in TypeScript. Stack bricks, build programs.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./runtime": {
+      "types": "./dist/runtime/index.d.ts",
+      "import": "./dist/runtime/index.js"
+    },
+    "./blocks": {
+      "types": "./dist/blocks/index.d.ts",
+      "import": "./dist/blocks/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "build:watch": "tsc -p tsconfig.json --watch",
+    "clean": "rm -rf dist",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "node --test --experimental-test-coverage dist/**/*.test.js",
+    "test:src": "node --import tsx --test src/**/*.test.ts",
+    "lint": "tsc -p tsconfig.json --noEmit && echo 'typecheck ok'",
+    "start": "node --import tsx src/cli.ts",
+    "demo": "node --import tsx src/demo.ts",
+    "prepublishOnly": "npm run clean && npm run build && npm test"
+  },
+  "keywords": [
+    "brickly",
+    "block-based",
+    "visual-programming",
+    "typescript",
+    "education",
+    "scratch-like",
+    "interpreter",
+    "ast",
+    "dsl"
+  ],
+  "author": "you",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.30",
+    "tsx": "^4.7.1",
+    "typescript": "^5.4.3"
+  },
+  "dependencies": {}
+}
